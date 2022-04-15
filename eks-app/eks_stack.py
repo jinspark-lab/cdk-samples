@@ -15,46 +15,48 @@ class EksStack(Stack):
         vpc = ec2.Vpc.from_lookup(self, id="VPC", is_default=True)
 
         # master IAM role that will be added to the system:masters k8s RBAC group
-        master_role = iam.Role(self, 
+        master_role = iam.Role(self,
                             id=f"{construct_id}-iam-master",
                             role_name=f"{construct_id}-iam-master",
                             assumed_by=iam.AccountRootPrincipal())
 
         # Create Cluster with Managed NodeGroup
-        cluster = eks.Cluster(self, 
+        cluster = eks.Cluster(self,
                             version=eks.KubernetesVersion.V1_21,
                             id=f"{construct_id}-cluster",
-                            cluster_name=f"{construct_id}-cluster", 
+                            cluster_name=f"{construct_id}-cluster",
                             vpc=vpc,
                             vpc_subnets=vpc.public_subnets,
-                            # vpc_subnets=[ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC, one_per_az=True)],
-                            default_capacity_instance=ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.SMALL),
-                            default_capacity=2,
+                            default_capacity=0,
                             masters_role=master_role)
 
-        # # IAM Role for Nodes with default managed policies. (EC2 Compute)
-        # # Node groups should have AmazonEKSWorkerNodePolicy, AmazonEC2ContainerRegistryReadOnly, AmazonEKS_CNI_Policy
-        # node_role = iam.Role(self,
-        #                     id=f"{construct_id}-iam-node",
-        #                     role_name=f"{construct_id}-iam-node",
-        #                     managed_policies=[
-        #                         iam.ManagedPolicy.from_aws_managed_policy_name("AmazonEKSWorkerNodePolicy"),
-        #                         iam.ManagedPolicy.from_aws_managed_policy_name("AmazonEC2ContainerRegistryReadOnly"),
-        #                         iam.ManagedPolicy.from_aws_managed_policy_name("AmazonEKS_CNI_Policy")
-        #                     ],
-        #                     assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
+        # IAM Role for Nodes with default managed policies. (EC2 Compute)
+        # Node groups should have AmazonEKSWorkerNodePolicy, AmazonEC2ContainerRegistryReadOnly, AmazonEKS_CNI_Policy
+        node_role = iam.Role(self,
+                            id=f"{construct_id}-iam-node",
+                            role_name=f"{construct_id}-iam-node",
+                            managed_policies=[
+                                iam.ManagedPolicy.from_aws_managed_policy_name("AmazonEKSWorkerNodePolicy"),
+                                iam.ManagedPolicy.from_aws_managed_policy_name("AmazonEC2ContainerRegistryReadOnly"),
+                                iam.ManagedPolicy.from_aws_managed_policy_name("AmazonEKS_CNI_Policy"),
+                                iam.ManagedPolicy.from_aws_managed_policy_name("AmazonSSMFullAccess")
+                            ],
+                            assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
 
-        # # Add Managed Node Group to Cluster
-        # # Without calling this function, cluster will use cluster.defaultNodegroup (Managed NodeGroup)
-        # cluster.add_nodegroup_capacity(id='my-node-group',
-        #                                 instance_types=[
-        #                                     ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MICRO)
-        #                                 ],
-        #                                 min_size=2,
-        #                                 max_size=4,
-        #                                 desired_size=2,
-        #                                 node_role=node_role
-        #                                 )
+        # Add Managed Node Group to Cluster
+        # Without calling this function, cluster will use cluster.defaultNodegroup (Managed NodeGroup)
+        cluster.add_nodegroup_capacity(id='my-node-group',
+                                        instance_types=[
+                                            ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MICRO)
+                                        ],
+                                        min_size=2,
+                                        max_size=4,
+                                        desired_size=2,
+                                        remote_access=eks.NodegroupRemoteAccess(
+                                            ssh_key_name="linux"
+                                        ),
+                                        node_role=node_role
+                                        )
 
         # Add manifests to EKS Cluster
         with open("./k8s_app/kubernetes/dist/mykube-deploy.k8s.yaml", 'r') as stream:

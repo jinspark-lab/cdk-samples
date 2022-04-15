@@ -9,6 +9,12 @@ class KubeService(Chart):
 
         # Creates the service to expose the pods to traffic from the loadbalancer (NLB)
         k8s.KubeService(self, "service",
+            metadata=k8s.ObjectMeta(
+                annotations={
+                    "service.beta.kubernetes.io/aws-load-balancer-type":"nlb",
+                    "service.beta.kubernetes.io/aws-load-balancer-scheme":"internet-facing"
+                }
+            ),
             spec=k8s.ServiceSpec(
                 type='LoadBalancer',
                 # type='NodePort',
