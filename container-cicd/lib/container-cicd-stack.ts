@@ -36,7 +36,7 @@ export class ContainerCicdStack extends Stack {
     const sourceAction = new codepipelineActions.CodeCommitSourceAction({
       actionName: 'CodeCommit',
       repository: repository,
-      branch: 'main',
+      branch: 'master',   //or main
       output: sourceOutput
     });
     pipeLine.addStage({
@@ -48,8 +48,21 @@ export class ContainerCicdStack extends Stack {
     // Build
     const project = new codebuild.Project(this, 'MyCodeBuild', {
       source: codebuild.Source.codeCommit({ repository }),
-      buildSpec: codebuild.BuildSpec.fromSourceFilename('./buildspec.yaml')
+      buildSpec: codebuild.BuildSpec.fromSourceFilename('./buildspec.yaml'),
+      environment: {
+        privileged: true
+      },
+      environmentVariables: {
+        ecr: {
+          value: containerRepo.repositoryUri
+        },
+        tag: {
+          value: 'cdk'
+        }
+      }
     });
+
+    containerRepo.grantPullPush(project);
 
     const buildOutput = new codepipeline.Artifact();
     const buildAction = new codepipelineActions.CodeBuildAction({
@@ -64,6 +77,10 @@ export class ContainerCicdStack extends Stack {
       stageName: 'Build',
       actions: [buildAction],
     });
+
+
+
+
     //
 
     // // Deploy

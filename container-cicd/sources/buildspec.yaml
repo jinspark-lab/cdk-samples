@@ -9,6 +9,6 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-      - docker build -t ${tag}:latest container/
+      - docker build -t $tag:latest .
       - docker tag $tag:latest $ecr:$tag
       - docker push $ecr

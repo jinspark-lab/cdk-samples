@@ -59,9 +59,9 @@ class EksStack(Stack):
                                         )
 
         # Add manifests to EKS Cluster
-        with open("./k8s_app/kubernetes/dist/mykube-deploy.k8s.yaml", 'r') as stream:
+        with open("./kubernetes/dist/mykube-deploy.k8s.yaml", 'r') as stream:
             deployment_yaml = yaml.load(stream, Loader=yaml.FullLoader)
         cluster.add_manifest(f"{construct_id}-app-deployment", deployment_yaml)
-        with open("./k8s_app/kubernetes/dist/mykube-service.k8s.yaml", 'r') as stream:
+        with open("./kubernetes/dist/mykube-service.k8s.yaml", 'r') as stream:
             service_yaml = yaml.load(stream, Loader=yaml.FullLoader)
         cluster.add_manifest(f"{construct_id}-app-service", service_yaml)
