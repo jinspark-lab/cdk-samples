@@ -17,10 +17,14 @@ How to install CDK8s?
 
 ### Please Note
 
+This sample uses default VPC in "us-east-1". If you are going to deploy different region, you should fix the region & availability zone codes.
+
 As this sample uses default VPC, you need to put "kubernetes.io/role/elb" tag into your Public Subnet.
 
-Key : kubernetes.io/role/elb
-Value : 1
+* Key : kubernetes.io/role/elb      
+* Value : 1
+
+Sample deploys Application Load Balancer to the us-east-1a and us-east-1c by default.
 
 For more detail, please refer the official document. (https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
 
