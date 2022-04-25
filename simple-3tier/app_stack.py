@@ -3,10 +3,10 @@ from aws_cdk import (
     Stack
 )
 from constructs import Construct
-from chat_app.vpc_stack import VpcStack
-from chat_app.ec2_stack import Ec2Stack
+from vpc_stack import VpcStack
+from ec2_stack import Ec2Stack
 
-class ChatAppStack(Stack):
+class AppStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)

@@ -77,22 +77,5 @@ export class ContainerCicdStack extends Stack {
       stageName: 'Build',
       actions: [buildAction],
     });
-
-
-
-
-    //
-
-    // // Deploy
-    // const service = ecs.FargateService;
-    // const deployAction = new codepipelineActions.EcsDeployAction({
-    //   actionName: 'EcsDeploy',
-    //   service: service,
-    //   input: buildOutput,
-    //   imageFile: buildOutput.atPath('imageDef.json'),
-    //   deploymentTimeout: Duration.minutes(60)
-    // })
-    // //
-
   }
 }
