@@ -12,6 +12,9 @@ If you are first to use CDK, you need to run CDK BootStrap.
 How to install CDK?
  : [AWS Doc](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html)
 
+
+This sample uses cdk8s for deploying Kubernetes objects. You should install cdk8s and uses it inside the folder(/kubernetes)      
+
 How to install CDK8s?
  : [CNCF Doc](https://cdk8s.io/)
 

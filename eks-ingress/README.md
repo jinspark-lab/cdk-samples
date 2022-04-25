@@ -12,6 +12,8 @@ If you are first to use CDK, you need to run CDK BootStrap.
 How to install CDK?
  : [AWS Doc](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html)
 
+This sample uses cdk8s for deploying Kubernetes objects. You should install cdk8s and uses it inside the folder(/kubernetes)      
+
 How to install CDK8s?
  : [CNCF Doc](https://cdk8s.io/)
 
@@ -27,6 +29,7 @@ As this sample uses default VPC, you need to put "kubernetes.io/role/elb" tag in
 Sample deploys Application Load Balancer to the us-east-1a and us-east-1c by default.
 
 For more detail, please refer the official document. (https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
+
 
 ## How to Start EKS-Ingress Sample
 
