@@ -15,6 +15,15 @@ How to install CDK?
 How to install CDK8s?
  : [CNCF Doc](https://cdk8s.io/)
 
+### Please Note
+
+As this sample uses default VPC, you need to put "kubernetes.io/role/elb" tag into your Public Subnet.
+
+Key : kubernetes.io/role/elb
+Value : 1
+
+For more detail, please refer the official document. (https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
+
 ## How to Start EKS-Ingress Sample
 
 1. cd kubernetes
