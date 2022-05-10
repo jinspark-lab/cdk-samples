@@ -1,6 +1,5 @@
 import { Duration, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import * as ecs from 'aws-cdk-lib/aws-ecs';
 import * as ecr from 'aws-cdk-lib/aws-ecr';
 import * as codecommit from 'aws-cdk-lib/aws-codecommit';
 import * as codebuild from 'aws-cdk-lib/aws-codebuild';
@@ -15,8 +14,6 @@ export class ContainerCicdStack extends Stack {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-    
-
     const containerRepo = new ecr.Repository(this, 'MyContainerRepo', {
       // imageScanOnPush: true
     });
