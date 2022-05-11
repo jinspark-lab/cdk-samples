@@ -6,17 +6,21 @@ This sample includes how to implement sample architectures using AWS-CDK.
 
 1. Container CI/CD Pipeline 
 
-1. EKS App (Service based)
+2. EKS App (Service based)
 
-2. EKS 2048 App (Ingress based)
+3. EKS 2048 App (Ingress based)
 
-2. Simple Web server 3 Tier
+4. Simple Web server 3 Tier
+
+5. Frontend CI/CD Pipeline (S3 based)
 
 ## What's next?
 
 1. Serverless Stack with CDK
 
 2. Database layer for Web 3 Tier
+
+3. ECS App
 
 ## Support
 
