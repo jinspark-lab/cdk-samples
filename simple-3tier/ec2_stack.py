@@ -25,7 +25,7 @@ class Ec2Stack(NestedStack):
     def __init__(self, scope: Construct, construct_id: str, vpc, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        role = iam.Role.from_role_arn(self, "Role", "arn:aws:iam::486403792456:role/EC2-AdminRole", mutable=False)
+        role = iam.Role.from_role_arn(self, "Role", "<EC2-Instance Role>", mutable=False)
         server = ec2.Instance(self, "Instance",
                                     instance_type=ec2.InstanceType("t3.micro"),
                                     machine_image=linux,
