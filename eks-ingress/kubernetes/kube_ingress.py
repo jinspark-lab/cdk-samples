@@ -29,7 +29,6 @@ class KubeIngress(Chart):
                 }
             ),
             spec=k8s.IngressSpec(
-                # ingress_class_name="alb",
                 default_backend=ingress_backend,
                 rules=[
                     k8s.IngressRule(

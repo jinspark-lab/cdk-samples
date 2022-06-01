@@ -20,9 +20,6 @@ class KubeDeploy(Chart):
                                             # image='public.ecr.aws/s9u7u6x1/sample_app_001:no-db',
                                             image='public.ecr.aws/l6m2t8p7/docker-2048:latest',
                                             ports=[k8s.ContainerPort(container_port=80)]
-                                            # args=[
-                                            #     "--ingress-class=alb"
-                                            # ]
                                         )
                                     ])
                                 )

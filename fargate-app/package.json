@@ -1,8 +1,8 @@
 {
-  "name": "frontend-cicd",
-  "version": "1.0.0",
+  "name": "fargate-app",
+  "version": "0.1.0",
   "bin": {
-    "frontend-cicd": "bin/frontend-cicd.js"
+    "fargate-app": "bin/fargate-app.js"
   },
   "scripts": {
     "build": "tsc",
@@ -12,14 +12,15 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",
-    "@types/prettier": "2.6.2",
-    "@types/node": "^13.7.0",
-    "aws-cdk": "2.20.0",
+    "@types/node": "10.17.27",
     "jest": "^26.4.2",
+    "ts-jest": "^26.2.0",
+    "aws-cdk": "2.21.1",
+    "ts-node": "^9.0.0",
     "typescript": "~4.6.4"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.20.0",
+    "aws-cdk-lib": "2.21.1",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.16"
   }

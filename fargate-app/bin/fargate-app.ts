@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { FrontendCicdStack } from '../lib/frontend-cicd-stack';
+import { FargateAppStack } from '../lib/fargate-app-stack';
 
 const app = new cdk.App();
-new FrontendCicdStack(app, 'FrontendCicdStack', {
+new FargateAppStack(app, 'FargateAppStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
