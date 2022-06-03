@@ -37,10 +37,14 @@ For more detail, please refer the official document. (https://docs.aws.amazon.co
 ## How to Start EKS-Ingress Sample
 
 1. cd kubernetes
-2. cdk8s synth
-3. cd ../
-4. cdk synth
-5. cdk deploy
+2. pipenv install
+3. cdk8s import --language python
+4. cdk8s synth
+5. cd ../
+6. cdk synth
+7. cdk deploy
+
+If you don't set AWS CLI / CDK environment in your system, 
 
 ## Support
 

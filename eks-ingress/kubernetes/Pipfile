@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[requires]
+python_version = "3"
+
+[packages]
+constructs = "~=10.1.25"
+cdk8s = "~=2.3.15"
+cdk8s-plus-22 = "~=2.0.0.rc5"
+
+[pipenv]
+allow_prereleases = true
