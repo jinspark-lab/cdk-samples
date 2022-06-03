@@ -41,8 +41,9 @@ For more detail, please refer the official document. (https://docs.aws.amazon.co
 3. cdk8s import --language python
 4. cdk8s synth
 5. cd ../
-6. cdk synth
-7. cdk deploy
+6. pip install -r requirements.txt
+7. cdk synth
+8. cdk deploy
 
 If you don't set AWS CLI / CDK environment in your system, 
 

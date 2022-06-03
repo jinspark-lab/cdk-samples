@@ -6,8 +6,8 @@ from eks_stack import EksStack
 app = cdk.App()
 
 eks_stack = EksStack(app, "my-eks-ingress",
-                    env=cdk.Environment(os.environ["CDK_DEFAULT_ACCOUNT"], 
-                                        os.environ["CDK_DEFAULT_REGION"])
+                    env=cdk.Environment(account=os.environ["CDK_DEFAULT_ACCOUNT"], 
+                                        region=os.environ["CDK_DEFAULT_REGION"])
                     )
 
 app.synth()
