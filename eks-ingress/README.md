@@ -17,6 +17,9 @@ This sample uses cdk8s for deploying Kubernetes objects. You should install cdk8
 How to install CDK8s?
  : [CNCF Doc](https://cdk8s.io/)
 
+If you are building your own k8s Python sample, you need to initialize cdk8s directory with command below
+ : cdk8s init python-app
+
 ### Please Note
 
 This sample uses default VPC in "us-east-1". If you are going to deploy different region, you should fix the region & availability zone codes.
@@ -34,11 +37,10 @@ For more detail, please refer the official document. (https://docs.aws.amazon.co
 ## How to Start EKS-Ingress Sample
 
 1. cd kubernetes
-2. cdk8s init python-app
-3. cdk8s synth
-4. cd ../
-5. cdk synth
-6. cdk deploy
+2. cdk8s synth
+3. cd ../
+4. cdk synth
+5. cdk deploy
 
 ## Support
 
