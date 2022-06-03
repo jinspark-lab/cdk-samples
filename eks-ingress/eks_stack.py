@@ -65,9 +65,9 @@ class EksStack(Stack):
                                         min_size=2,
                                         max_size=4,
                                         desired_size=2,
-                                        remote_access=eks.NodegroupRemoteAccess(
-                                            ssh_key_name="linux"
-                                        ),
+                                        # remote_access=eks.NodegroupRemoteAccess(
+                                        #     ssh_key_name="linux"
+                                        # ),
                                         node_role=node_role,
                                         subnets=ec2.SubnetSelection(
                                             availability_zones=[
