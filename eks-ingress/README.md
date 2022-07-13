@@ -8,6 +8,7 @@ You can start EKS Ingress sample with this simple CDK.
 ## Prerequisites
 
 If you are first to use CDK, you need to run CDK BootStrap.
+Command line interface requires Python 3.x and Pip 3.x.
 
 How to install CDK?
  : [AWS Doc](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html)
